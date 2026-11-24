@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  放到每台 Kodi 设备的 userdata 目录（设置 -> 系统信息可查看路径）。
+  替换全部 192.168.1.10 和 CHANGE_ME 为你的实际值。
+  修改后必须完全退出 Kodi 再启动。
+-->
+<advancedsettings>
+  <cache>
+    <buffermode>1</buffermode>
+    <memorysize>139460608</memorysize>
+    <readfactor>20</readfactor>
+  </cache>
+
+  <videodatabase>
+    <type>mysql</type>
+    <host>192.168.1.10</host>
+    <port>3306</port>
+    <user>xbmc</user>
+    <pass>CHANGE_ME</pass>
+  </videodatabase>
+
+  <musicdatabase>
+    <type>mysql</type>
+    <host>192.168.1.10</host>
+    <port>3306</port>
+    <user>xbmc</user>
+    <pass>CHANGE_ME</pass>
+  </musicdatabase>
+
+  <videolibrary>
+    <!-- 扫描/刷新资料库时，是否采用 NFO 中的观看状态和续播点 -->
+    <importwatchedstate>true</importwatchedstate>
+    <importresumepoint>true</importresumepoint>
+  </videolibrary>
+
+  <pathsubstitution>
+    <substitute>
+      <from>special://masterprofile/Thumbnails/</from>
+      <!-- NFS 写法（推荐，无账号密码；需在群晖开启 NFS 并给读写权限） -->
+      <to>nfs://192.168.1.10/volume1/kodi-data/Thumbnails/</to>
+      <!-- SMB 写法（二选一，把注释换到上面）：
+      <to>smb://xbmc:SMB密码@192.168.1.10/kodi-data/Thumbnails/</to>
+      -->
+    </substitute>
+  </pathsubstitution>
+</advancedsettings>

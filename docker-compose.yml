@@ -1,0 +1,12 @@
+services:
+  kodi-mariadb:
+    image: mariadb:10.11
+    container_name: kodi-mariadb
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?请在 .env 中设置 MARIADB_ROOT_PASSWORD}
+      TZ: ${TZ:-Asia/Shanghai}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ${DATA_DIR:-/volume1/docker/kodi-mariadb}:/var/lib/mysql
